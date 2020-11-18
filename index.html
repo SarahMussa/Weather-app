@@ -15,7 +15,7 @@
       src="https://kit.fontawesome.com/f83a1360a6.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="src/style.css" />
     <link />
     <link
       href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200;300&display=swap"
@@ -50,11 +50,9 @@
             <div class="col-4">
               <i class="fas fa-cloud-sun icity"></i>
               <h3 class="temperature today">
-                <strong>
-                  <span class="temperature today"> 21º </span>
-                </strong>
+                <strong> <span id="temperature-max-today"></span>° </strong>
                 <span> / </span>
-                <span class="temperature today"> 12º</span>
+                <span id="temperature-min-today"></span>°
                 <span class="temperatureUnit"> C </span>
               </h3>
             </div>
@@ -63,49 +61,49 @@
           <div class="forecast">
             <div class="row">
               <div class="col-6">Saturday</div>
-              <div class="col-4 temperature"><strong>21º</strong> / 12º</div>
+              <div class="col-4 temperature"><strong>21°</strong> / 12°</div>
               <div class="col-2">
                 <i class="fas fa-cloud-sun"></i>
               </div>
             </div>
             <div class="row">
               <div class="col-6">Sunday</div>
-              <div class="col-4 temperature"><strong>23º</strong> / 16º</div>
+              <div class="col-4 temperature"><strong>23°</strong> / 16°</div>
               <div class="col-2">
                 <i class="fas fa-cloud-sun"></i>
               </div>
             </div>
             <div class="row">
               <div class="col-6">Monday</div>
-              <div class="col-4 temperature"><strong>20º</strong> / 18º</div>
+              <div class="col-4 temperature"><strong>20°</strong> / 18°</div>
               <div class="col-2">
                 <i class="fas fa-cloud-showers-heavy"></i>
               </div>
             </div>
             <div class="row">
               <div class="col-6">Tuesday</div>
-              <div class="col-4 temperature"><strong>20º</strong> / 16º</div>
+              <div class="col-4 temperature"><strong>20°</strong> / 16°</div>
               <div class="col-2">
                 <i class="fas fa-cloud-showers-heavy"></i>
               </div>
             </div>
             <div class="row">
               <div class="col-6">Wednesday</div>
-              <div class="col-4 temperature"><strong>20º</strong> / 15º</div>
+              <div class="col-4 temperature"><strong>20°</strong> / 15°</div>
               <div class="col-2">
                 <i class="fas fa-cloud-showers-heavy"></i>
               </div>
             </div>
             <div class="row">
               <div class="col-6">Thursday</div>
-              <div class="col-4 temperature"><strong>20º</strong> / 14º</div>
+              <div class="col-4 temperature"><strong>20°</strong> / 14°</div>
               <div class="col-2">
                 <i class="fas fa-cloud-showers-heavy"></i>
               </div>
             </div>
             <div class="row">
               <div class="col-6">Friday</div>
-              <div class="col-4 temperature"><strong>20º</strong> / 13º</div>
+              <div class="col-4 temperature"><strong>20°</strong> / 13°</div>
               <div class="col-2">
                 <i class="fas fa-cloud-showers-heavy"></i>
               </div>
@@ -124,12 +122,11 @@
               <h3>
                 <strong class="temperature today">
                   <span class="temperature today" id="temperature-today">
-                    19
                   </span>
-                  <span class="temperatureUnit" id="temperature-unit">º C</span>
+                  <span class="temperatureUnit" id="temperature-unit">° C</span>
                 </strong>
               </h3>
-              <p>Feels like <strong class="temperature">17º </strong></p>
+              <p>Feels like <strong id="#temperature-feelslike"></strong>°</p>
 
               <p>Chances of rain 0%</p>
             </div>
@@ -137,28 +134,28 @@
           <div class="row hour">
             <div class="col-3">
               <p>Morning</p>
-              <p class="temperature">15º</p>
+              <p class="temperature">15°</p>
               <i class="fas fa-sun ihour"></i>
               <br />
               <i class="fas fa-tint drip"></i> 5%
             </div>
             <div class="col-3">
               <p>Afternoon</p>
-              <p class="temperature">21º</p>
+              <p class="temperature">21°</p>
               <i class="fas fa-cloud-sun ihour"></i>
               <br />
               <i class="fas fa-tint drip"></i> 0%
             </div>
             <div class="col-3">
               <p>Evening</p>
-              <p class="temperature">14º</p>
+              <p class="temperature">14°</p>
               <i class="fas fa-moon ihour"></i>
               <br />
               <i class="fas fa-tint drip"></i> 10%
             </div>
             <div class="col-3">
               <p>Overnight</p>
-              <p class="temperature">13º</p>
+              <p class="temperature">13°</p>
               <i class="fas fa-moon ihour"></i>
               <br />
               <i class="fas fa-tint drip"></i> 5%
@@ -169,30 +166,28 @@
             <div class="col-3">
               <p>Wind</p>
               <p>Humidity</p>
-              <p>UV Index</p>
             </div>
             <div class="col-4">
-              <p id="wind"><i class="fas fa-wind iinfo"></i> 16km/h</p>
-              <p id="humidity"><i class="fas fa-tint iinfo"></i> 76%</p>
-              <p><i class="fas fa-umbrella-beach iinfo"></i> 0 of 10</p>
+              <p><span id="wind"></span> km/h</p>
+              <p><span id="humidity"></span> %</p>
             </div>
             <div class="col-2">
               <p>Sunrise</p>
               <p>Sunset</p>
             </div>
             <div class="col-3">
-              <p class="convertHour">07:47h</p>
-              <p class="convertHour">18:56h</p>
+              <p class="convertHour"><span id="sunrise"></span>h</p>
+              <p class="convertHour"><span id="sunset"></span>h</p>
             </div>
           </div>
         </div>
       </div>
     </div>
     <p id="coded-by">
-      <a href="https://github.com/SarahMussa/Weather-app"
+      <a href="https://github.com/SarahMussa/Weather-app" target="_blank"
         >Open-source code by Sarah Mussa</a
       >
     </p>
-    <script src="script.js"></script>
+    <script src="src/script.js"></script>
   </body>
 </html>

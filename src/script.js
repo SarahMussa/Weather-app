@@ -59,16 +59,31 @@ currentHour.innerHTML = hour(now);
 
 // Conditions
 function weather(response) {
+  console.log(response.data);
+
   document.querySelector("#searched-city").innerHTML = response.data.name;
   document.querySelector("#temperature-today").innerHTML = Math.round(
     response.data.main.temp
   );
+  document.querySelector("#temperature-max-today").innerHTML = Math.round(
+    response.data.main.temp_max
+  );
+  document.querySelector("#temperature-min-today").innerHTML = Math.round(
+    response.data.main.temp_min
+  );
+  //FEELS LIKE -----
+  //document.querySelector("#temperature-feelslike").innerHTML = Math.round(response.data.main.feels_like);
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+  // SUNRISE -----
+  //document.querySelector("#sunrise").innerHTML = response.data.sys.sunrise;
+  // SUNSET ------
+  //document.querySelector("#sunset").innerHTML = response.data.sys.sunset;
+  //CHANGES OF RAIN -------
 }
 
 // Search city
