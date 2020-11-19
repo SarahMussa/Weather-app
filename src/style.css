@@ -10,6 +10,14 @@ i {
   color: white;
 }
 
+h1 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 25px;
+}
+
 a {
   color: #894c9c;
 }
@@ -44,37 +52,56 @@ button {
 
 .cf {
   height: 0px;
+  position: relative;
+  right: -195px;
+  transition: 200ms ease-in-out;
 }
 
 #celsius-link:hover {
   cursor: pointer;
   text-decoration: none;
   color: #894c9c;
-  font-size: large;
+  font-size: 15px;
 }
 #fahrenheit-link:hover {
   cursor: pointer;
   text-decoration: none;
   color: #894c9c;
-  font-size: large;
+  font-size: 15px;
 }
 
 #ampm {
   position: relative;
-  top: -88px;
-  right: -390px;
+  top: -88.5px;
+  right: -395px;
+  transition: 200ms ease-in-out;
+}
+
+#ampm:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: #894c9c;
+  font-size: 15px;
 }
 
 #current-location {
   position: relative;
   top: -30px;
-  right: -210px;
+  right: -400px;
+  transition: 200ms ease-in-out;
+}
+
+#current-location:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: #894c9c;
+  font-size: 15px;
 }
 
 .unitHour:hover {
   cursor: pointer;
   text-decoration: none;
-
+  color: #894c9c;
   font-size: 15px;
 }
 
@@ -139,8 +166,8 @@ button {
   font-size: 17px;
 }
 
-.today {
-  font-size: 30px;
+.temperature.today {
+  font-size: 35px;
 }
 
 .forecast {

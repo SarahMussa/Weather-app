@@ -62,28 +62,44 @@ function weather(response) {
   console.log(response.data);
 
   document.querySelector("#searched-city").innerHTML = response.data.name;
-  document.querySelector("#temperature-today").innerHTML = Math.round(
-    response.data.main.temp
-  );
   document.querySelector("#temperature-max-today").innerHTML = Math.round(
     response.data.main.temp_max
   );
   document.querySelector("#temperature-min-today").innerHTML = Math.round(
     response.data.main.temp_min
   );
-  //FEELS LIKE -----
-  //document.querySelector("#temperature-feelslike").innerHTML = Math.round(response.data.main.feels_like);
+
+  // DAILY ICON ------
+
+  celsiusTemperature = response.data.main.temp;
+  document.querySelector("#temperature-today").innerHTML = Math.round(
+    celsiusTemperature
+  );
+  document
+    .querySelector("#icon-now")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  document.querySelector("#feels-like").innerHTML = Math.round(
+    response.data.main.feels_like
+  );
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
+
   // SUNRISE -----
   //document.querySelector("#sunrise").innerHTML = response.data.sys.sunrise;
+
   // SUNSET ------
   //document.querySelector("#sunset").innerHTML = response.data.sys.sunset;
+
   //CHANGES OF RAIN -------
+
+  // UV INDEX -------
 }
 
 // Search city
@@ -123,25 +139,26 @@ function currentLocation(event) {
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", currentLocation);
 
-let temperature = 19;
 // Fahrenheit
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureC = document.querySelector("#temperature-today");
   let temperatureUnit = document.querySelector("#temperature-unit");
-  let temperatureF = Math.round((temperature * 9) / 5 + 32);
-  temperatureC.innerHTML = `${temperatureF}`;
   temperatureUnit.innerHTML = "º F";
+  let temperatureF = Math.round((celsiusTemperature * 9) / 5 + 32);
+  temperatureC.innerHTML = `${temperatureF}`;
 }
 let fahrenheitButton = document.querySelector("#fahrenheit-link");
 fahrenheitButton.addEventListener("click", convertToFahrenheit);
+
+let celsiusTemperature = null;
 
 // Celsius
 function convertToCelsius(event) {
   event.preventDefault();
   let temperatureC = document.querySelector("#temperature-today");
   let temperatureUnit = document.querySelector("#temperature-unit");
-  temperatureC.innerHTML = `${temperature}`;
+  temperatureC.innerHTML = Math.round(celsiusTemperature);
   temperatureUnit.innerHTML = "º C";
 }
 let celsiusLink = document.querySelector("#celsius-link");
