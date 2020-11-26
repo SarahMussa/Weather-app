@@ -50,7 +50,7 @@
               <p id="current-date"></p>
             </div>
             <div class="col-5">
-              <i class="fas fa-cloud-sun icity"></i>
+              <p id="daily-icon"></p>
               <h3 class="temperature today">
                 <strong> <span id="temperature-max-today"></span>° </strong>
                 <span> / </span>
@@ -60,57 +60,7 @@
             </div>
           </div>
 
-          <div class="forecast">
-            <div class="row">
-              <div class="col-6">Saturday</div>
-              <div class="col-4 temperature"><strong>21°</strong> / 12°</div>
-              <div class="col-2">
-                <i class="fas fa-cloud-sun"></i>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">Sunday</div>
-              <div class="col-4 temperature"><strong>23°</strong> / 16°</div>
-              <div class="col-2">
-                <i class="fas fa-cloud-sun"></i>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">Monday</div>
-              <div class="col-4 temperature"><strong>20°</strong> / 18°</div>
-              <div class="col-2">
-                <i class="fas fa-cloud-showers-heavy"></i>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">Tuesday</div>
-              <div class="col-4 temperature"><strong>20°</strong> / 16°</div>
-              <div class="col-2">
-                <i class="fas fa-cloud-showers-heavy"></i>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">Wednesday</div>
-              <div class="col-4 temperature"><strong>20°</strong> / 15°</div>
-              <div class="col-2">
-                <i class="fas fa-cloud-showers-heavy"></i>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">Thursday</div>
-              <div class="col-4 temperature"><strong>20°</strong> / 14°</div>
-              <div class="col-2">
-                <i class="fas fa-cloud-showers-heavy"></i>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-6">Friday</div>
-              <div class="col-4 temperature"><strong>20°</strong> / 13°</div>
-              <div class="col-2">
-                <i class="fas fa-cloud-showers-heavy"></i>
-              </div>
-            </div>
-          </div>
+          <div class="forecast" id="forecast"></div>
         </div>
 
         <div class="col-6 right">
@@ -130,39 +80,13 @@
               </h3>
               <p>Feels like <strong id="feels-like"></strong>°</p>
 
-              <p>Chances of rain 0%</p>
+              <p>
+                <span> Chances of rain </span>
+                <span id="rain"></span>
+              </p>
             </div>
           </div>
-          <div class="row hour">
-            <div class="col-3">
-              <p>Morning</p>
-              <p class="temperature">15°</p>
-              <i class="fas fa-sun ihour"></i>
-              <br />
-              <i class="fas fa-tint drip"></i> 5%
-            </div>
-            <div class="col-3">
-              <p>Afternoon</p>
-              <p class="temperature">21°</p>
-              <i class="fas fa-cloud-sun ihour"></i>
-              <br />
-              <i class="fas fa-tint drip"></i> 0%
-            </div>
-            <div class="col-3">
-              <p>Evening</p>
-              <p class="temperature">14°</p>
-              <i class="fas fa-moon ihour"></i>
-              <br />
-              <i class="fas fa-tint drip"></i> 10%
-            </div>
-            <div class="col-3">
-              <p>Overnight</p>
-              <p class="temperature">13°</p>
-              <i class="fas fa-moon ihour"></i>
-              <br />
-              <i class="fas fa-tint drip"></i> 5%
-            </div>
-          </div>
+          <div class="row" id="hour-forecast"></div>
 
           <div class="row information">
             <div class="col-3">
@@ -180,8 +104,8 @@
               <p>Sunset</p>
             </div>
             <div class="col-3">
-              <p class="convertHour"><span id="sunrise"></span>h</p>
-              <p class="convertHour"><span id="sunset"></span>h</p>
+              <p class="convertHour"><span id="sunrise"></span></p>
+              <p class="convertHour"><span id="sunset"></span></p>
             </div>
           </div>
         </div>
