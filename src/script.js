@@ -1,5 +1,6 @@
 // Date
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let weekDays = [
     "Sunday",
     "Monday",
@@ -9,7 +10,7 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-  let weekDay = weekDays[now.getDay()];
+  let weekDay = weekDays[date.getDay()];
   let months = [
     "January",
     "February",
@@ -24,7 +25,7 @@ function formatDate(date) {
     "November",
     "December",
   ];
-  let month = months[now.getMonth()];
+  let month = months[date.getMonth()];
   let day = now.getDate();
   return `${weekDay}, ${month} ${day}`;
 }
@@ -107,127 +108,85 @@ function weather(response) {
     response.data.sys.sunset * 1000
   );
   //CHANGES OF RAIN -------
+
+  // Request forecast
+  let apiKey = "5c090f8cdeae8b782090bca3c05b7983";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(forecast);
 }
 
-// Forecast
+// Forecast and conditions
 function forecast(response) {
   console.log(response.data);
-  document.querySelector(
-    "#uv-index"
-  ).innerHTML = `${response.data.daily[0].uvi} of 10`;
+  document.querySelector("#uv-index").innerHTML = `${Math.round(
+    response.data.daily[0].uvi
+  )} of 10`;
   document.querySelector(
     "#daily-icon"
   ).innerHTML = `<img src="http://openweathermap.org/img/wn/${response.data.daily[0].weather[0].icon}@2x.png" alt="Temperature icon" id="daily-icon" />`;
 
-  let forecast = document.querySelector("#forecast");
-  let forecast1 = response.data.daily[1];
-  let forecast2 = response.data.daily[2];
-  let forecast3 = response.data.daily[3];
-  let forecast4 = response.data.daily[4];
-  let forecast5 = response.data.daily[5];
-  let forecast6 = response.data.daily[6];
-  let forecast7 = response.data.daily[7];
-  forecast.innerHTML = `
-  <div class="row">
-  <div class="col-5">Saturday</div>
-  <div class="col-4 ">
-  <strong>
-  ${Math.round(forecast1.temp.max)}°
-  </strong> 
-  / 
-  ${Math.round(forecast1.temp.min)}°
-  </div>
-  <div class="col-3">
-  <img src="http://openweathermap.org/img/wn/${
-    forecast1.weather[0].icon
-  }@2x.png" alt="Temperature icon" class="forecastIcons" />
-  </div>
-  </div>
-  <div class="row">
-  <div class="col-5">Saturday</div>
-  <div class="col-4 temperature"><strong>${Math.round(
-    forecast2.temp.max
-  )}°</strong> / ${Math.round(forecast2.temp.min)}°</div>
-  <div class="col-3">
-  <img src="http://openweathermap.org/img/wn/${
-    forecast2.weather[0].icon
-  }@2x.png" alt="Temperature icon" class="forecastIcons" />
-  </div>
-  </div> 
-  <div class="row">
-  <div class="col-5">Saturday</div>
-  <div class="col-4 temperature"><strong>${Math.round(
-    forecast3.temp.max
-  )}°</strong> / ${Math.round(forecast3.temp.min)}°</div>
-  <div class="col-3">
-  <img src="http://openweathermap.org/img/wn/${
-    forecast3.weather[0].icon
-  }@2x.png" alt="Temperature icon" class="forecastIcons" />
-  </div>
-  </div>   
-  <div class="row">
-    <div class="col-5">Saturday</div>
-    <div class="col-4 temperature"><strong>${Math.round(
-      forecast4.temp.max
-    )}°</strong> / ${Math.round(forecast4.temp.min)}°</div>
-    <div class="col-3">
-      <img src="http://openweathermap.org/img/wn/${
-        forecast4.weather[0].icon
-      }@2x.png" alt="Temperature icon" class="forecastIcons" />
-    </div>
-  </div>
+  let weekDays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let forecastElement = document.querySelector("#forecast");
+  // clear the forecast
+  forecastElement.innerHTML = "";
+
+  // use for to make it clear
+  for (let index = 1; index < 8; index++) {
+    let forecast = response.data.daily[index];
+    let day = new Date(forecast.dt * 1000);
+    forecastElement.innerHTML += `
     <div class="row">
-    <div class="col-5">Saturday</div>
-    <div class="col-4 temperature"><strong>${Math.round(
-      forecast5.temp.max
-    )}°</strong> / ${Math.round(forecast5.temp.min)}°</div>
-    <div class="col-3">
-      <img src="http://openweathermap.org/img/wn/${
-        forecast5.weather[0].icon
-      }@2x.png" alt="Temperature icon" class="forecastIcons" />
+      <div class="col-5">${weekDays[day.getDay()]}</div>
+      <div class="col-4">
+        <strong>
+          <span class="forecast-max">${Math.round(forecast.temp.max)}</span>°
+        </strong> 
+        / 
+        <span class="forecast-min">${Math.round(forecast.temp.min)}</span>°
+      </div>
+      <div class="col-3">
+        <img src="http://openweathermap.org/img/wn/${
+          forecast.weather[0].icon
+        }@2x.png" alt="Temperature icon" class="forecastIcons" />
+      </div>
     </div>
-  </div>
-    <div class="row">
-    <div class="col-5">Saturday</div>
-    <div class="col-4 temperature"><strong>${Math.round(
-      forecast6.temp.max
-    )}°</strong> / ${Math.round(forecast6.temp.min)}°</div>
-    <div class="col-3">
-      <img src="http://openweathermap.org/img/wn/${
-        forecast6.weather[0].icon
-      }@2x.png" alt="Temperature icon" class="forecastIcons" />
-    </div>
-  </div>
-    <div class="row">
-    <div class="col-5">Saturday</div>
-    <div class="col-4 temperature"><strong>${Math.round(
-      forecast7.temp.max
-    )}°</strong> / ${Math.round(forecast7.temp.min)}°</div>
-    <div class="col-3">
-     <img src="http://openweathermap.org/img/wn/${
-       forecast7.weather[0].icon
-     }@2x.png" alt="Temperature icon" class="forecastIcons" />
-    </div>
-  </div>
-  `;
+    `;
+  }
 
   let hourForecast = document.querySelector("#hour-forecast");
   let forecastHour = response.data.daily[0];
   hourForecast.innerHTML = `<div class="col-3">
               <p>Morning</p>
-              <p class="temperature">${Math.round(forecastHour.temp.morn)}°</p>
+              <p class="temperature"><span id="morning-temp">${Math.round(
+                forecastHour.temp.morn
+              )}</span>°</p>
             </div>
             <div class="col-3">
               <p>Afternoon</p>
-              <p class="temperature">${Math.round(forecastHour.temp.day)}°</p>
+              <p class="temperature"><span id="afternoon-temp">${Math.round(
+                forecastHour.temp.day
+              )}</span>°</p>
             </div>
             <div class="col-3">
               <p>Evening</p>
-              <p class="temperature">${Math.round(forecastHour.temp.eve)}°</p>
+              <p class="temperature"><span id="evening-temp">${Math.round(
+                forecastHour.temp.eve
+              )}</span>°</p>
             </div>
             <div class="col-3">
               <p>Night</p>
-              <p class="temperature">${Math.round(forecastHour.temp.night)}°</p>
+              <p class="temperature"><span id="night-temp">${Math.round(
+                forecastHour.temp.night
+              )}</span>°</p>
             </div>`;
 }
 //<img src="http://openweathermap.org/img/wn/$@2x.png" alt="Temperature icon" class="hourIcons" />
@@ -236,7 +195,7 @@ function forecast(response) {
 function searchCity(city) {
   let apiKey = "5c090f8cdeae8b782090bca3c05b7983";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(weather, forecast);
+  axios.get(apiUrl).then(weather);
 }
 
 // Search city - Submit
@@ -259,10 +218,6 @@ function searchLocation(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(weather);
-
-  let part = "daily";
-  apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(forecast);
 }
 
 // Current Location
@@ -277,14 +232,55 @@ currentLocationButton.addEventListener("click", currentLocation);
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureC = document.querySelector("#temperature-today");
-  let temperatureUnit = document.querySelector("#temperature-unit");
-  temperatureUnit.innerHTML = "º F";
-  let temperatureF = Math.round((temperatureC * 9) / 5 + 32);
+  let temperatureF = Math.round((temperatureC.innerHTML * 9) / 5 + 32);
   temperatureC.innerHTML = `${temperatureF}`;
 
-  let maxTemp = document.querySelector("#temperature-max-today");
-  let maxTempC = weather(response.data.main.temp_max);
-  maxTemp.innerHTML = Math.round((maxTempC * 9) / 5 + 32);
+  let temperatureUnit = document.querySelector("#temperature-unit");
+  temperatureUnit.innerHTML = "º F";
+
+  let feelsLike = document.querySelector("#feels-like");
+  feelsLike.innerHTML = Math.round((feelsLike.innerHTML * 9) / 5 + 32);
+
+  let tempMax = document.querySelector("#temperature-max-today");
+  tempMax.innerHTML = Math.round((tempMax.innerHTML * 9) / 5 + 32);
+
+  let tempMin = document.querySelector("#temperature-min-today");
+  tempMin.innerHTML = Math.round((tempMin.innerHTML * 9) / 5 + 32);
+
+  let temperatureUnitToday = document.querySelector("#temperature-unit-today");
+  temperatureUnitToday.innerHTML = "F";
+
+  let morningTemp = document.querySelector("#morning-temp");
+  morningTemp.innerHTML = Math.round((morningTemp.innerHTML * 9) / 5 + 32);
+
+  let afternoonTemp = document.querySelector("#afternoon-temp");
+  afternoonTemp.innerHTML = Math.round((afternoonTemp.innerHTML * 9) / 5 + 32);
+
+  let eveningTemp = document.querySelector("#evening-temp");
+  eveningTemp.innerHTML = Math.round((eveningTemp.innerHTML * 9) / 5 + 32);
+
+  let nightTemp = document.querySelector("#night-temp");
+  nightTemp.innerHTML = Math.round((nightTemp.innerHTML * 9) / 5 + 32);
+
+  let forecastMax = document.querySelectorAll(".forecast-max");
+  forecastMax.forEach(function (item) {
+    // grabbing the current value to convert
+    let currentTemp = item.innerHTML;
+    // convert to Fahrenheit
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  let forecastMin = document.querySelectorAll(".forecast-min");
+  forecastMin.forEach(function (item) {
+    // grabbing the current value to convert
+    let currentTemp = item.innerHTML;
+    // convert to Fahrenheit
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+  });
+
+  // disable event to avoid multiple conversion
+  celsiusLink.addEventListener("click", convertToCelsius);
+  fahrenheitButton.removeEventListener("click", convertToFahrenheit);
 }
 let fahrenheitButton = document.querySelector("#fahrenheit-link");
 fahrenheitButton.addEventListener("click", convertToFahrenheit);
@@ -293,15 +289,58 @@ fahrenheitButton.addEventListener("click", convertToFahrenheit);
 function convertToCelsius(event) {
   event.preventDefault();
   let temperatureC = document.querySelector("#temperature-today");
+  temperatureC.innerHTML = Math.round(((temperatureC.innerHTML - 32) * 5) / 9);
+
   let temperatureUnit = document.querySelector("#temperature-unit");
-  temperatureC.innerHTML = Math.round(temperatureC);
   temperatureUnit.innerHTML = "º C";
 
+  let feelsLike = document.querySelector("#feels-like");
+  feelsLike.innerHTML = Math.round(((feelsLike.innerHTML - 32) * 5) / 9);
+
   let tempMax = document.querySelector("#temperature-max-today");
-  tempMax.innerHTML = Math.round(tempMax);
+  tempMax.innerHTML = Math.round(((tempMax.innerHTML - 32) * 5) / 9);
+
+  let tempMin = document.querySelector("#temperature-min-today");
+  tempMin.innerHTML = Math.round(((tempMin.innerHTML - 32) * 5) / 9);
+
+  let temperatureUnitToday = document.querySelector("#temperature-unit-today");
+  temperatureUnitToday.innerHTML = "C";
+
+  let morningTemp = document.querySelector("#morning-temp");
+  morningTemp.innerHTML = Math.round(((morningTemp.innerHTML - 32) * 5) / 9);
+
+  let afternoonTemp = document.querySelector("#afternoon-temp");
+  afternoonTemp.innerHTML = Math.round(
+    ((afternoonTemp.innerHTML - 32) * 5) / 9
+  );
+
+  let eveningTemp = document.querySelector("#evening-temp");
+  eveningTemp.innerHTML = Math.round(((eveningTemp.innerHTML - 32) * 5) / 9);
+
+  let nightTemp = document.querySelector("#night-temp");
+  nightTemp.innerHTML = Math.round(((nightTemp.innerHTML - 32) * 5) / 9);
+
+  let forecastMax = document.querySelectorAll(".forecast-max");
+  forecastMax.forEach(function (item) {
+    // grabbing the current value to convert
+    let currentTemp = item.innerHTML;
+    // convert to Fahrenheit
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+
+  let forecastMin = document.querySelectorAll(".forecast-min");
+  forecastMin.forEach(function (item) {
+    // grabbing the current value to convert
+    let currentTemp = item.innerHTML;
+    // convert to Fahrenheit
+    item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+  });
+
+  // disable event to avoid multiple conversion
+  celsiusLink.removeEventListener("click", convertToCelsius);
+  fahrenheitButton.addEventListener("click", convertToFahrenheit);
 }
 let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", convertToCelsius);
 
 // AmPm
 function convertAmPm(event) {
@@ -326,3 +365,6 @@ function convertAmPm(event) {
 }
 let AmPm = document.querySelector("#ampm");
 AmPm.addEventListener("click", convertAmPm);
+
+// Load city on load
+searchCity("Paris");
