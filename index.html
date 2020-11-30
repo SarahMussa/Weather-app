@@ -48,6 +48,8 @@
             <div class="col-7">
               <h1 id="searched-city"></h1>
               <p id="current-date"></p>
+              <p>Sunrise - <span id="sunrise"></span></p>
+              <p>Sunset - <span id="sunset"></span></p>
             </div>
             <div class="col-5">
               <p id="daily-icon"></p>
@@ -61,14 +63,10 @@
               </h3>
             </div>
           </div>
-
-          <div class="forecast" id="forecast"></div>
-        </div>
-
-        <div class="col-6 right">
           <div class="row currently">
             <div class="col">
               <p class="convertHour" id="current-hour"></p>
+              <br />
               <p id="description"></p>
               <img src="" alt="" id="icon-now" />
             </div>
@@ -81,35 +79,18 @@
                 </strong>
               </h3>
               <p>Feels like <strong id="feels-like"></strong>°</p>
+              <br />
 
-              <p>
-                <span> Chances of rain </span>
-                <span id="rain"></span>
-              </p>
+              <p>Wind <span id="wind"></span> km/h</p>
+              <p>Humidity <span id="humidity"></span> %</p>
+              <p>UV Index <span id="uv-index"></span></p>
             </div>
+            <div class="row" id="hour-forecast"></div>
           </div>
-          <div class="row" id="hour-forecast"></div>
+        </div>
 
-          <div class="row information">
-            <div class="col-3">
-              <p>Wind</p>
-              <p>Humidity</p>
-              <p>UV Index</p>
-            </div>
-            <div class="col-4">
-              <p><span id="wind"></span> km/h</p>
-              <p><span id="humidity"></span> %</p>
-              <p id="uv-index"></p>
-            </div>
-            <div class="col-2">
-              <p>Sunrise</p>
-              <p>Sunset</p>
-            </div>
-            <div class="col-3">
-              <p class="convertHour"><span id="sunrise"></span></p>
-              <p class="convertHour"><span id="sunset"></span></p>
-            </div>
-          </div>
+        <div class="col-6 right">
+          <div class="forecast" id="forecast"></div>
         </div>
       </div>
     </div>

@@ -24,7 +24,6 @@ a {
 
 h3 {
   margin: 5px auto;
-  font-size: 25px;
 }
 
 p {
@@ -34,7 +33,7 @@ p {
 }
 
 i {
-  font-size: 30px;
+  font-size: 35px;
   text-align: center;
 }
 
@@ -157,24 +156,30 @@ button {
 .city {
   text-align: center;
   font-size: 60px;
-  padding: 20px 0;
+  padding: 15px 0;
   border: 1px solid white;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   line-height: 25px;
 }
 
 #searched-city {
-  margin: 20px auto;
+  margin: 15px auto;
 }
 
 #current-date {
-  margin: 20px auto;
+  margin: 15px auto;
 }
 
 #daily-icon {
-  width: 100px;
-  height: 100px;
-  
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
+}
+
+#icon-now {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto;
 }
 
 .forecast {
@@ -182,8 +187,9 @@ button {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   margin: 10px auto;
+  padding: auto auto;
   line-height: 41px;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .forecastIcons {
@@ -198,10 +204,15 @@ button {
 .currently {
   text-align: center;
   font-size: 60px;
-  padding: 20px 0;
+  padding: 15px 0;
   border: 1px solid white;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   line-height: 25px;
+}
+
+#current-hour {
+  font-size: 30px;
+  padding: 15px 0;
 }
 
 .temperature {
@@ -214,7 +225,8 @@ button {
 
 #hour-forecast {
   line-height: 40px;
-  padding: 20px 0;
+  padding: 10px 0;
+  margin: 15px auto 0 auto;
   border: 1px solid white;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   color: white;
@@ -227,10 +239,6 @@ button {
   line-height: 30px;
 }
 
-.drip {
-  font-size: 15px;
-}
-
 #coded-by {
   display: block;
   margin: 0 auto;
@@ -241,3 +249,4 @@ button {
   color: #894c9c;
   font-size: large;
 }
+
