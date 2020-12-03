@@ -49,14 +49,6 @@ button {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
-.cf {
-  height: 0px;
-  position: relative;
-  right: -195px;
-  transition: 200ms ease-in-out;
-  display: inline-block;
-}
-
 .container {
   margin: 20px auto;
   padding: 20px 10px 20px 10px;
@@ -91,10 +83,6 @@ button {
 }
 
 #current-location {
-  position: relative;
-  top: -30px;
-  right: -400px;
-  transition: 200ms ease-in-out;
   display: inline-block;
 }
 
@@ -115,14 +103,10 @@ button {
   cursor: pointer;
   text-decoration: none;
   color: #894c9c;
-  font-size: 15px;
+  font-size: large;
 }
 
 #ampm {
-  position: relative;
-  top: -88.5px;
-  right: -395px;
-  transition: 200ms ease-in-out;
   display: inline-block;
 }
 
@@ -133,28 +117,14 @@ button {
   font-size: 15px;
 }
 
-.units {
-  font-size: 13px;
-  position: relative;
-  top: -59px;
-  right: -320px;
-  text-decoration: none;
+.cf {
   display: inline-block;
 }
 
-.unitHour {
+.units {
   font-size: 13px;
-  position: relative;
-  top: -59px;
-  right: -250px;
   text-decoration: none;
-}
-
-.unitHour:hover {
-  cursor: pointer;
-  text-decoration: none;
-  color: #894c9c;
-  font-size: 15px;
+  display: inline-block;
 }
 
 .city {
