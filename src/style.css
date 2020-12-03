@@ -49,6 +49,14 @@ button {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
+.cf {
+  height: 0px;
+  position: relative;
+  right: -195px;
+  transition: 200ms ease-in-out;
+  display: inline-block;
+}
+
 .container {
   margin: 20px auto;
   padding: 20px 10px 20px 10px;
@@ -87,27 +95,21 @@ button {
   top: -30px;
   right: -400px;
   transition: 200ms ease-in-out;
+  display: inline-block;
 }
 
 #current-location:hover {
   cursor: pointer;
   text-decoration: none;
   color: #894c9c;
-  font-size: 15px;
-}
-
-.cf {
-  height: 0px;
-  position: relative;
-  right: -195px;
-  transition: 200ms ease-in-out;
+  font-size: large;
 }
 
 #celsius-link:hover {
   cursor: pointer;
   text-decoration: none;
   color: #894c9c;
-  font-size: 15px;
+  font-size: large;
 }
 #fahrenheit-link:hover {
   cursor: pointer;
@@ -121,6 +123,7 @@ button {
   top: -88.5px;
   right: -395px;
   transition: 200ms ease-in-out;
+  display: inline-block;
 }
 
 #ampm:hover {
@@ -136,13 +139,7 @@ button {
   top: -59px;
   right: -320px;
   text-decoration: none;
-}
-
-.unitHour:hover {
-  cursor: pointer;
-  text-decoration: none;
-  color: #894c9c;
-  font-size: 15px;
+  display: inline-block;
 }
 
 .unitHour {
@@ -151,6 +148,13 @@ button {
   top: -59px;
   right: -250px;
   text-decoration: none;
+}
+
+.unitHour:hover {
+  cursor: pointer;
+  text-decoration: none;
+  color: #894c9c;
+  font-size: 15px;
 }
 
 .city {
@@ -249,4 +253,3 @@ button {
   color: #894c9c;
   font-size: large;
 }
-

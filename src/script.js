@@ -107,7 +107,6 @@ function weather(response) {
   document.querySelector("#sunset").innerHTML = formatHours(
     response.data.sys.sunset * 1000
   );
-  //CHANGES OF RAIN -------
 
   // Request forecast
   let apiKey = "5c090f8cdeae8b782090bca3c05b7983";
@@ -145,15 +144,15 @@ function forecast(response) {
     let day = new Date(forecast.dt * 1000);
     forecastElement.innerHTML += `
     <div class="row">
-      <div class="col-5">${weekDays[day.getDay()]}</div>
-      <div class="col-4">
+      <div class="col-12 col-md-5">${weekDays[day.getDay()]}</div>
+      <div class="col-12 col-md-4">
         <strong>
           <span class="forecast-max">${Math.round(forecast.temp.max)}</span>°
         </strong> 
         / 
         <span class="forecast-min">${Math.round(forecast.temp.min)}</span>°
       </div>
-      <div class="col-3">
+      <div class="col-12 col-md-3">
         <img src="http://openweathermap.org/img/wn/${
           forecast.weather[0].icon
         }@2x.png" alt="Temperature icon" class="forecastIcons" />
@@ -164,32 +163,31 @@ function forecast(response) {
 
   let hourForecast = document.querySelector("#hour-forecast");
   let forecastHour = response.data.daily[0];
-  hourForecast.innerHTML = `<div class="col-3">
+  hourForecast.innerHTML = `<div class="col-6 col-md-3">
               <p>Morning</p>
               <p class="temperature"><span id="morning-temp">${Math.round(
                 forecastHour.temp.morn
               )}</span>°</p>
             </div>
-            <div class="col-3">
+            <div class="col-6 col-md-3">
               <p>Afternoon</p>
               <p class="temperature"><span id="afternoon-temp">${Math.round(
                 forecastHour.temp.day
               )}</span>°</p>
             </div>
-            <div class="col-3">
+            <div class="col-6 col-md-3">
               <p>Evening</p>
               <p class="temperature"><span id="evening-temp">${Math.round(
                 forecastHour.temp.eve
               )}</span>°</p>
             </div>
-            <div class="col-3">
+            <div class="col-6 col-md-3">
               <p>Night</p>
               <p class="temperature"><span id="night-temp">${Math.round(
                 forecastHour.temp.night
               )}</span>°</p>
             </div>`;
 }
-//<img src="http://openweathermap.org/img/wn/$@2x.png" alt="Temperature icon" class="hourIcons" />
 
 // Search city
 function searchCity(city) {
@@ -324,6 +322,7 @@ function convertToCelsius(event) {
   forecastMax.forEach(function (item) {
     // grabbing the current value to convert
     let currentTemp = item.innerHTML;
+
     // convert to Fahrenheit
     item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
   });

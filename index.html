@@ -26,24 +26,27 @@
   <body>
     <div class="container">
       <br />
-      <div class="col-8">
-        <form id="search-city">
-          <input type="text" placeholder="Search city" id="search-input" />
-          <input type="submit" value="🔎" />
-        </form>
-      </div>
-      <div class="col-4">
-        <button id="current-location">📍 Current Location</button>
-        <div class="cf">
-          <button class="units">
-            <a href="#" id="celsius-link">°C</a> |
-            <a href="#" id="fahrenheit-link">°F</a>
-          </button>
-          <button id="ampm">Am/Pm</button>
+      <div class="row">
+        <div class="col-12 col-md-8 mb-3 mb-mb-0">
+          <form id="search-city">
+            <input type="text" placeholder="Search city" id="search-input" />
+            <input type="submit" value="🔎" />
+          </form>
+        </div>
+        <div class="col-4">
+          <button id="current-location">📍 Current Location</button>
+          <div class="cf">
+            <button class="units">
+              <a href="#" id="celsius-link">°C</a> |
+              <a href="#" id="fahrenheit-link">°F</a>
+            </button>
+            <button id="ampm">Am/Pm</button>
+          </div>
         </div>
       </div>
+
       <div class="row app">
-        <div class="col-6 left">
+        <div class="col-12 col-md-6 left">
           <div class="row city">
             <div class="col-7">
               <h1 id="searched-city"></h1>
@@ -51,7 +54,7 @@
               <p>Sunrise - <span id="sunrise"></span></p>
               <p>Sunset - <span id="sunset"></span></p>
             </div>
-            <div class="col-5">
+            <div class="col-12 col-md-6">
               <p id="daily-icon"></p>
               <h3 class="temperature today">
                 <strong> <span id="temperature-max-today"></span>° </strong>
@@ -63,14 +66,15 @@
               </h3>
             </div>
           </div>
+
           <div class="row currently">
-            <div class="col">
+            <div class="col-12 col-md">
               <p class="convertHour" id="current-hour"></p>
               <br />
               <p id="description"></p>
               <img src="" alt="" id="icon-now" />
             </div>
-            <div class="col">
+            <div class="col-12 col-md">
               <h3>
                 <strong class="temperature today">
                   <span class="temperature today" id="temperature-today">
@@ -89,7 +93,7 @@
           </div>
         </div>
 
-        <div class="col-6 right">
+        <div class="col-12 col-md-6 right">
           <div class="forecast" id="forecast"></div>
         </div>
       </div>
