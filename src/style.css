@@ -15,7 +15,7 @@ h1 {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 15px;
 }
 
 a {
@@ -48,11 +48,6 @@ button {
   border-radius: 4px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
-
-
-
-
-
 
 .container {
   margin: 20px auto;

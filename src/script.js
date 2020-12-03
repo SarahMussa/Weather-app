@@ -144,15 +144,15 @@ function forecast(response) {
     let day = new Date(forecast.dt * 1000);
     forecastElement.innerHTML += `
     <div class="row">
-      <div class="col-12 col-md-5">${weekDays[day.getDay()]}</div>
-      <div class="col-12 col-md-4">
+      <div class="col-5">${weekDays[day.getDay()]}</div>
+      <div class="col-4">
         <strong>
           <span class="forecast-max">${Math.round(forecast.temp.max)}</span>°
         </strong> 
         / 
         <span class="forecast-min">${Math.round(forecast.temp.min)}</span>°
       </div>
-      <div class="col-12 col-md-3">
+      <div class="col-3">
         <img src="http://openweathermap.org/img/wn/${
           forecast.weather[0].icon
         }@2x.png" alt="Temperature icon" class="forecastIcons" />
